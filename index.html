@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wheel of Names</title>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<h1>🎡 Wheel of Names</h1>
+
+<div class="container">
+  <div class="wheel-section">
+    <div class="wheel-wrap">
+      <canvas id="wheel" width="420" height="420"></canvas>
+      <div class="pointer"></div>
+    </div>
+    <button class="spin-btn" id="spinBtn" onclick="spin()">SPIN!</button>
+  </div>
+
+  <div class="names-panel">
+    <h2>✏️ Names</h2>
+    <div class="input-row">
+      <input id="nameInput" type="text" placeholder="Add a name..." maxlength="30" onkeydown="if(event.key==='Enter')addName()">
+      <button class="add-btn" onclick="addName()">+</button>
+    </div>
+    <ul class="names-list" id="namesList"></ul>
+    <button class="clear-btn" onclick="clearAll()">Clear All</button>
+
+    <div class="divider">or bulk import</div>
+
+    <textarea id="pasteArea" class="paste-area" placeholder="Paste names here — one per line, or comma/tab separated — then click Import"></textarea>
+    <p class="paste-hint">Supports newline, comma, or tab separators</p>
+    <button class="import-btn" onclick="importPasted()">⬆ Import Names</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <div class="modal-trophy">🏆</div>
+    <h2>Winner!</h2>
+    <div class="modal-winner" id="winnerName"></div>
+    <div class="remove-winner-row">
+      <input type="checkbox" id="removeWinner" checked>
+      <label for="removeWinner">Remove winner from wheel</label>
+    </div>
+    <br><br>
+    <button class="modal-close" onclick="closeModal()">Spin Again!</button>
+  </div>
+</div>
+
+<div class="confetti-container" id="confetti"></div>
+<script src="script.js"></script>
+</body>
+</html>
